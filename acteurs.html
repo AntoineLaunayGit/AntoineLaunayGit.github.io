@@ -31,6 +31,27 @@
 			<h3><a href="sources.html">Mon CV</a></h3>
 		</section>
 </nav>
+    <script>
+    var interval;
+    var secondes = 10;
+    window.onload = function() {
+        compteur('compteur');
+    }
 
+    function compteur(element) {
+        interval = setInterval(function() {
+            var txt = document.getElementById(element);
+            if(secondes == 0) {
+                txt.innerHTML = "compte à rebour terminé !";                    
+                    clearInterval(interval);
+                    return;
+            }
+            
+            var text = secondes > 1 ? 'secondes' : 'secondes';
+            txt.innerHTML = secondes + ' ' + text + ' restantes';
+            secondes--;
+        }, 1000);
+    }
+    </script>
 </body>
 </html>
