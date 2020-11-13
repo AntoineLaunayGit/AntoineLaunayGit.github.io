@@ -55,13 +55,7 @@ if (square.x + square.vx > canvas.width || square.x + square.vx < 0) {
 }
 }
 
-canvas.addEventListener('mouseover', function(e){
   raf = window.requestAnimationFrame(draw);
-});
-
-canvas.addEventListener("mouseout",function(e){
-  window.cancelAnimationFrame(raf);
-});
 
 square.draw();
 
