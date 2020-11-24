@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>Mon site web</title>
+	<link rel="stylesheet" href="indexstyle.css">
+	<link rel="SHORTCUT ICON" href="chatanimation.ico">	<!-- Une icone d'onglet modifié -->
+	<h1><a href="index.html">Mon site web</a></h1>
+<img src="chatanimation.ico" alt="chatanimation" class ="chatanimation"/>	<!-- l'animation -->
+<nav class="menu">	<!-- Le menu avec les # permettant de se déplacer à un endroit précis d'une page du site où se situe l'id correspondant -->
+		<section class="categorie">
+			<h3><a href="index.html">Accueil</a></h3>
+		</section>
+		<section class="categorie">
+			<h3><a href="mespages.html">Mes pages</a></h3>
+			<ul>
+				<li><a href="tp1.html">compte à rebour</a></li>
+				<li><a href="tp2.html">carré rouge</a></li>
+				<li><a href="tp3.html">tp3</a></li>
+				<li><a href="tp4.html">3 carrés rouges</a></li>
+				<li><a href="tp5.html">10 carrés rouges</a></li>
+			</ul>
+		</section>
+		<section class="categorie">
+			<h3><a href="cv.html">Mon CV</a></h3>
+		</section>
+</nav>
+  
+ </head>
+ 
+<body>
+<canvas id="triCarresCanvas" width="1920" height="937">
+ <script>
+
+        triCarresCanvas = document.getElementById("triCarresCanvas")
+        if (triCarresCanvas.getContext) {
+            var ctx = triCarresCanvas.getContext('2d');
+            ctx.canvas.width  = window.innerWidth;
+            ctx.canvas.height = window.innerHeight;
+            ctx.fillStyle = "#FF0000";
+            //ctx.fillRect(25, 25, 700,100);
+
+        }
+
+        var first = false
+        function moveSquare(){
+                    var x = 25
+                    var goToRight = true
+                    var i = 0
+                    
+                    var inter = setInterval(() =>{
+                        triCarresCanvas = document.getElementById("triCarresCanvas")
+                        if (triCarresCanvas.getContext) {
+                            if(goToRight) x = x +10
+                            else x = x - 10;
+                            var ctx = triCarresCanvas.getContext('2d');
+                            if(x > window.innerWidth) goToRight = false
+                            else if(x < 0) goToRight = true
+                            ctx.clearRect(x-100, 0, window.innerWidth, 200);
+                            ctx.fillRect(x, 25, 50, 50);
+                        
+                            
+                            i ++;
+                        }
+                    }, 10)
+        }
+
+        var j = 0
+        function loop(){
+                if(j < 3){
+                    setTimeout(function(){
+                        j++;
+                        moveSquare()
+                        loop();
+                 }, 1000)
+                }
+                
+        }
+        
+
+        
+        window.addEventListener("load", (event) =>{
+            setTimeout(() =>{
+
+                loop()
+                
+
+                
+            }, 4000)
+            
+            
+        });
+    
+</script>
+
+ </body>
+</html>

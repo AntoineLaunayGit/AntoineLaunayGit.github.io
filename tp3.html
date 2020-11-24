@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>Mon site web</title>
+	<link rel="stylesheet" href="indexstyle.css">
+	<link rel="SHORTCUT ICON" href="chatanimation.ico">	<!-- Une icone d'onglet modifié -->
+	<h1><a href="index.html">Mon site web</a></h1>
+<img src="chatanimation.ico" alt="chatanimation" class ="chatanimation"/>	<!-- l'animation -->
+<nav class="menu">	<!-- Le menu avec les # permettant de se déplacer à un endroit précis d'une page du site où se situe l'id correspondant -->
+		<section class="categorie">
+			<h3><a href="index.html">Accueil</a></h3>
+		</section>
+		<section class="categorie">
+			<h3><a href="mespages.html">Mes pages</a></h3>
+			<ul>
+				<li><a href="tp1.html">compte à rebour</a></li>
+				<li><a href="tp2.html">carré rouge</a></li>
+				<li><a href="tp3.html">tp3</a></li>
+				<li><a href="tp4.html">3 carrés rouges</a></li>
+				<li><a href="tp5.html">10 carrés rouges</a></li>
+			</ul>
+		</section>
+		<section class="categorie">
+			<h3><a href="cv.html">Mon CV</a></h3>
+		</section>
+</nav>
+  
+ </head>
+ 
+<body>
+<canvas id="carreCanvas" width="1920" height="937">
+ <script>
+
+        carreCanvas = document.getElementById("carreCanvas")
+        if (carreCanvas.getContext) {
+            var ctx = carreCanvas.getContext('2d');
+            ctx.canvas.width  = window.innerWidth;
+            ctx.canvas.height = window.innerHeight;
+            ctx.fillStyle = "#FF0000";
+            //ctx.fillRect(25, 25, 700,100);
+
+        }
+
+        
+        window.addEventListener("load", (event) =>{
+            setTimeout(() =>{
+                x = 25
+                goToRight = true
+                i = 0
+                var inter = setInterval(() =>{
+                        carreCanvas = document.getElementById("carreCanvas")
+                        if (carreCanvas.getContext) {
+                            if(goToRight) x = x +10
+                            else x = x - 10;
+                            var ctx = carreCanvas.getContext('2d');
+                            if(x > window.innerWidth) goToRight = false
+                            else if(x < 0) goToRight = true
+                            ctx.clearRect(0, 0, carreCanvas.width, 200);
+                            ctx.fillRect(x, 25, 100, 100);
+                            i ++;
+                        }
+                }, 10)
+            }, 2000)
+            
+            
+        });
+    
+</script>
+
+ </body>
+</html>
