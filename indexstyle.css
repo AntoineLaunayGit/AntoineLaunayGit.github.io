@@ -147,7 +147,7 @@ section:hover ul {
 
 @font-face {
 	font-family: batpolice;
-	src: url('../AUTRE/batmfa.ttf');
+	src: url('batmfa.ttf');
 }
 
 /*-- Animations --*/
